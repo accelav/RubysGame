@@ -7,7 +7,7 @@ public class HealthCollectible : MonoBehaviour
 {
     public int health = 1;
     public int velocidad = 3;
-
+    public AudioClip collectedClip;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,6 +16,7 @@ public class HealthCollectible : MonoBehaviour
 
         if (controller != null && controller.health < controller.maxHealth)
         {
+            controller.PlaySound(collectedClip);
             controller.ChangeHealth(health);
             //controller.ChangeSpeed(velocidad);
             Destroy(gameObject);
